@@ -1,0 +1,26 @@
+#include<lpc21xx.h>
+void main()
+{
+IO1DIR=(1<<18)|(1<<20)|(1<<19);
+while(1)
+{
+if(IO0PIN>0xFF)
+{
+IO1SET=1<<18;
+IO1CLR=1<<19;
+IO1CLR=1<<20;
+}
+if(IO0PIN<0xFF)
+{
+IO1SET=1<<19;
+IO1CLR=1<<18;
+IO1CLR=1<<20;
+}
+if(IO0PIN==0xFF)
+{
+IO1SET=1<<20;
+IO1CLR=1<<18;
+IO1CLR=1<<19;
+}
+}
+}
